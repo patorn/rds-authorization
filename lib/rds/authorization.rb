@@ -2,7 +2,11 @@ require "rds/authorization/version"
 
 module Rds
   module Authorization
-    helper_method :current_user, :can?
+
+    def self.included(base)
+      return unless base < ActionController::Base
+      base.helper_method :current_user, :can?
+    end
 
     protected
 
