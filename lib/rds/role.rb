@@ -1,11 +1,7 @@
 module Rds
-  module Role
-    extend ActiveSupport::Concern
-    
-    included do
-      store_accessor :permissions
-      has_many :users
-    end
+  class Role < ActiveRecord::Base
+    store_accessor :permissions
+    has_many :users
 
     def can?(permission)
       if permissions.present?

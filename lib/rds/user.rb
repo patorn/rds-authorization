@@ -1,10 +1,7 @@
 module Rds
-  module User
-    extend ActiveSupport::Concern
-    
-    included do
-      belongs_to :role
-    end
+  class User < ActiveRecord::Base
+
+    belongs_to :role
     
     def role_can?(permissions)
       permissions = [ permissions ] if permissions.class != Array
