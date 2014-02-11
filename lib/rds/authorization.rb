@@ -4,7 +4,15 @@ module Rds
   module Authorization
 
     def self.included(base)
-      return unless base < ActionController::Base
+
+      if defined?(ActionController::Base)
+        base < ActionController::Base
+      end
+
+      if defined?(ActionController::API)
+        base < ActionController::API
+      end
+
       base.helper_method :current_user, :can?
     end
 
