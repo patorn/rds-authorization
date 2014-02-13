@@ -1,8 +1,11 @@
 module Rds
-  class User < ActiveRecord::Base
-    self.table_name = "public.#{table_name}"
+  module UserPermission
     
-    belongs_to :role
+    extend ActiveSupport::Concern
+
+    included do
+      belongs_to :role
+    end
     
     def role_can?(permissions)
       permissions = [ permissions ] if permissions.class != Array

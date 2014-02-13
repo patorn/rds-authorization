@@ -1,9 +1,12 @@
 module Rds
-  class Role < ActiveRecord::Base
-    self.table_name = "public.#{table_name}"
+  module RolePermission
     
-    store_accessor :permissions
-    has_many :users
+    extend ActiveSupport::Concern
+
+    included do
+      store_accessor :permissions
+      has_many :users
+    end
 
     def can?(permission)
       if permissions.present?

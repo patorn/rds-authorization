@@ -1,6 +1,6 @@
 require "rds/authorization/version"
-require "rds/role"
-require "rds/user"
+require "rds/role_permission"
+require "rds/user_permission"
 
 module Rds
   module Authorization
