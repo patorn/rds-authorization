@@ -1,5 +1,7 @@
 module Rds
   class Role < ActiveRecord::Base
+    self.table_name = "public.#{table_name}"
+    
     store_accessor :permissions
     has_many :users
 

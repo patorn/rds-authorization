@@ -1,6 +1,7 @@
 module Rds
   class User < ActiveRecord::Base
-
+    self.table_name = "public.#{table_name}"
+    
     belongs_to :role
     
     def role_can?(permissions)
